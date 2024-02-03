@@ -1,13 +1,13 @@
 package com.example.backend.users;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.example.backend.orders.Orders;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -23,4 +23,6 @@ public class User {
     private String username;
     private String password;
     private String email;
+    @OneToMany(mappedBy = "user")
+    private List<Orders> orders;
 }
